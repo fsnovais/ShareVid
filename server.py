@@ -3,10 +3,11 @@ from password import pss_hash, pss_check
 from validate_email import validate_email
 import ibm_db
 
+
 #conn = ibm_db.connect("database","username","password")
 app = Flask(__name__)
 conn = ibm_db.connect("Server=****;Port=50000;Hostname=****; Database=BLUDB;UID=**;PWD=senha;", '*****', '****')
-	
+
 
 @app.route("/")
 def home():
@@ -40,7 +41,7 @@ def register_usr():
 		return 'falha no registro'
 
 @app.route("/register/estabelecimento/", methods=['POST', 'GET'])
-def register_stb(): 
+def register_stb():
 	name = request.args.get('name')
 	email = request.args.get('email')
 	uf = request.args.get('uf')
