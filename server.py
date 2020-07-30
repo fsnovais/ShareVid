@@ -5,7 +5,7 @@ import ibm_db
 
 #conn = ibm_db.connect("database","username","password")
 app = Flask(__name__)
-conn = ibm_db.connect("Server=****;Port=50000;Hostname=****; Database=BLUDB;UID=**;PWD=senha;", 'dgq68475', 'dcfgng39q@r3jpk2')
+conn = ibm_db.connect("Server=****;Port=50000;Hostname=****; Database=BLUDB;UID=**;PWD=senha;", '*****', '****')
 	
 
 @app.route("/")
