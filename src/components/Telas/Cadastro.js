@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TextInput, Button, Alert } from 'react-native';
-
+import styles from './estilo'
 class Cadastro extends Component {
 
 
@@ -42,7 +42,7 @@ class Cadastro extends Component {
                     <Text style={styles.titulocadastro}>Cadastro</Text>
                     <Text style={styles.cadastro}>Descrição:</Text>
                 </View>
-                <View style={styles.containersub}>
+                <View style={styles.form}>
 
                     <TextInput style={styles.input}
                         underlineColorAndroid="transparent"
@@ -78,75 +78,4 @@ class Cadastro extends Component {
 }
 
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#292929',
-        flex: 1,
-    },
-
-    titulocadastro: {
-        height: 45,
-        margin: 7,
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginTop: 10,
-        color: 'white',
-
-
-    },
-    button: {
-        height: 60,
-        width: 325,
-        padding: 15,
-        backgroundColor: '#7AB3FF',
-        margin: 15,
-        borderColor: '#ff6505',
-
-
-    },
-
-
-    input: {
-        height: 65,
-        width: 325,
-        backgroundColor: '#ffffff',
-        padding: 10,
-        borderRadius: 20,
-        color: '#000',
-        margin: 30,
-        marginTop: -5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: 16
-
-    },
-    cadastro: {
-        height: 100,
-        margin: 5,
-        padding: 10,
-        fontSize: 20,
-        color: '#fff',
-        textAlign: 'center',
-
-    },
-    containersub: {
-        alignItems: 'center',
-        marginTop: 50,
-        justifyContent: 'center',
-
-    },
-
-
-    form: {
-        justifyContent: 'center',
-        alignItems: 'center',
-
-
-    },
-
-
-});
-Cadastro.navigationOptions = {
-    header: null,
-};
 export default Cadastro;

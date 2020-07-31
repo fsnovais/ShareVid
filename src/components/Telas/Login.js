@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Button, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
+import { View, Image, Button, TouchableOpacity, Text, TextInput, Alert } from 'react-native';
 
 
 class Login extends Component {
@@ -24,7 +24,7 @@ class Login extends Component {
 		else {
 			try {
 				// Comando para autenticar as variáveis no banco
-				//this.props.navigation.navigate('Mapa')
+				this.props.navigation.navigate('Home')
 			}
             catch(err){
                 Alert.alert('Usuario ou senha invalidos.');  
@@ -68,59 +68,5 @@ class Login extends Component {
 			);
 		}
 	}
-
-	const styles = StyleSheet.create({
-		container: {
-			backgroundColor: '#292929',
-			flex: 1,
-		},
-		formcontainer: {
-			padding: 20
-		},
-
-		form: {
-			justifyContent: 'center',
-			alignItems: 'center',
-			flexGrow: 1
-		},
-
-		inner: {
-			flexDirection: 'column',
-			justifyContent: 'center',
-			alignItems: 'center',
-			flexGrow: 1,
-
-		},
-
-		image: {
-			width: 300,
-			height: 300,
-		},
-		input: {
-
-			height: 60,
-			width: 300,
-			borderRadius: 20,
-			margin: 10,
-			backgroundColor: 'rgba(255,255,255,0.2)',
-			padding: 10,
-			color: 'white'
-
-		},
-
-
-		textButtons: {
-			color: '#fff',
-			textAlign: 'center',
-			fontWeight: '700',
-			fontSize: 15,
-			marginTop: -5
-
-		}
-	});
-	Login.navigationOptions = {
-		header: null,
-	};
-
 
 	export default Login;
