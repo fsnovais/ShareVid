@@ -7,7 +7,6 @@ import ibm_db
 
 #conn = ibm_db.connect("database","username","password")
 app = Flask(__name__)
-<<<<<<< HEAD
 app.secret_key = "TROCAR ESSA SENHA"
 app.permanent_session_lifetime = timedelta(days=20)
 conn = ibm_db.connect("Server=***;Port=50000;Hostname=**; Database=BLUDB;UID=**;PWD=**;", 'uid', 'pss')
