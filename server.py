@@ -11,27 +11,32 @@ app = Flask(__name__)
 app.secret_key = "TROCAR ESSA SENHA"
 app.permanent_session_lifetime = timedelta(days=20)
 conn = ibm_db.connect("Server=***;Port=50000;Hostname=**; Database=BLUDB;UID=**;PWD=**;", 'uid', 'pss')
-	
-conn = ibm_db.connect("Server=****;Port=50000;Hostname=****; Database=BLUDB;UID=**;PWD=senha;", '*****', '****')
 
 @app.route("/")
 def home():
-	return render_template("index.html")
+	if 'email' in session:
+		return
+	else:
+		return redirect(url_for("login"))
+
 
 @app.route("/login/", methods=['POST', 'GET'])
 def login():
-	email = request.args.get('email')
-	password = request.args.get('password')
-	sql = 'SELECT email, senha FROM usuarios WHERE email = ?'
-	stmt = ibm_db.prepare(conn, sql)
-	param = tuple((email, password))
-	email = ibm_db.execute(stmt, param)
-	print(email)
-	session.permanent = True
-	session['email'] = email
-	#TODO: validar email, checar senha com o banco de dados e garantir acesso
-	#se o user logar direitinho
-	return 'tudo correu bem'
+	if request.method == "POST":
+		email = request.args.get('email')
+		password = request.args.get('password')
+		sql = 'SELECT email, senha FROM usuarios WHERE email = ?'
+		stmt = ibm_db.prepare(conn, sql)
+		param = tuple((email, password))
+		ibm_db.bind_param(stmt, 1, email)
+		ibm_db.execute(stmt)
+		accInfo = ibm_db.fetch_assoc(stmt)
+		if pss_check(password.encode(), accInfo["SENHA"].encode()):
+			password = None
+			session.permanent = True
+			session['email'] = email
+			return redirect(url_for("home"))
+		return 'senha inválida'
 
 @app.route("/register/user/", methods=['POST', 'GET'])
 def register_usr():
@@ -46,13 +51,15 @@ def register_usr():
 			param = tuple((name, email, pss))
 			stmt = ibm_db.prepare(conn, salvar_dados)
 			ibm_db.execute(stmt, param)
-			return redirect(url_for("user"))
+			session.permanent = True
+			session['email'] = email
+			session['nome'] = name
+			return redirect(url_for("home"))
 		else:
 			return 'falha no registro'
 	return
 
 @app.route("/register/estabelecimento/", methods=['POST', 'GET'])
-
 def register_stb(): 
 	if request.method == "POST":
 		name = request.args.get('name')
@@ -71,21 +78,6 @@ def register_stb():
 			ibm_db.execute(stmt, param)
 		else:
 			return 'falha no registro'
-
-def register_stb():
-	name = request.args.get('name')
-	email = request.args.get('email')
-	uf = request.args.get('uf')
-	cep = request.args.get('cep')
-	logradouro = request.args.get('logradouro')
-	num = request.args.get('num')
-	pss = request.args.get('password')
-	psscheck = request.args.get('password2')
-	if psscheck != pss:
-		return 'As senhas devem ser iguais' #TODO: deixar a validação descritiva em caso de erros
-	elif len(pss) >= 8 and pss.isalnum and validate_email(email) and len(name) <= 35 and len(name) >= 2 and len(uf) == 2 and len(cep) == 8 and len(logradouro) <= 35 and len(num) <= 5:
-		pss = pss_hash(pss) #TODO: salvar na db
-		return 'estabelecimento registrado'
 	else:
 		return
 
@@ -99,6 +91,7 @@ def user():
 @app.route('/logout/')
 def logout():
 	session.pop("email", None)
+	session.pop("name", None)
 	return redirect(url_for("login"))
 
 if __name__ == "__main__":
