@@ -4,9 +4,9 @@ export default styles = StyleSheet.create({
 
 
     container: {
-        backgroundColor: '#292929',
+        backgroundColor: 'white',
         flex: 1,
-        position: "relative",
+        position: "relative"
         
     },
     mapa: {
@@ -19,7 +19,36 @@ export default styles = StyleSheet.create({
     formcontainer: {
         padding: 20
     },
-
+    visitInformation: {
+        paddingTop: 20,
+        paddingBottom: 20
+    },
+    title : {
+        fontFamily: 'Roboto',
+        fontSize: 20,
+        paddingLeft: 20,
+        paddingBottom: 10,
+        color: '#FF473A',
+        fontWeight: "bold"
+    },
+    header: {
+        fontSize: 25,
+        padding: 10,
+        color: '#979797'
+    },
+    row: {
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+    p: {
+        fontFamily: 'Roboto',
+        fontSize: 15
+    },
+    column: {
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        paddingLeft: 20
+    },
     form: {
         justifyContent: 'center',
         alignItems: 'center',

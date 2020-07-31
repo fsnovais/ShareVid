@@ -11,7 +11,7 @@ class Home extends Component {
 
 			<View style={styles.container}>
 				<View >
-					<Text >Lotação de Espaços</Text>
+					<Text style={styles.header}>Lotação de Espaços</Text>
 				</View>
 				<View style={styles.mapa}>
 					<MapView style={StyleSheet.absoluteFillObject}
@@ -23,21 +23,31 @@ class Home extends Component {
 						}}>
 					</MapView>
 				</View>
-				<View >
-					<Text >Proximo a você, esses são os locais com baixa lotação</Text>
-				</View>
-				<View >
-					<Text >Academia Fit Smart	08:00 as 22:00</Text>
-					<Text >Lanchonete Lanche's Gulosos	06:30 as 18:30</Text>
-					<Text >Lojas Americanas	08:00 as 22:00</Text>
-					<Text >Restaurante Vila K -	11:00 as 23:30</Text>
-				</View>
-				<View style={{ margin: 20 }}>
-					<Button title="Agendar Visita" />
-				</View>
-				<View >
-					<Text >Você está em SIS QL 12 Lago Sul</Text>
-				</View>
+				<View style={styles.visitInformation}>
+					<View >
+						<Text style={styles.title}>Proximo a você, esses são os locais com baixa lotação</Text>
+					</View>
+					<View style={styles.row}>
+						<View style={styles.column}>
+							<Text style={styles.p}>Academia Fit Smart </Text>
+							<Text style={styles.p}>Lanchonete Lanche's Gulosos	</Text>
+							<Text style={styles.p}>Lojas Americanas	</Text>
+							<Text style={styles.p}>Restaurante Vila K</Text>
+						</View>
+						<View style={styles.column}>
+							<Text>08:00 as 22:00</Text>
+							<Text>06:30 as 18:30</Text>
+							<Text>08:00 as 22:00</Text>
+							<Text>11:00 as 23:30</Text>
+						</View>
+					</View>
+					<View style={{ margin: 20 }}>
+						<Button title="Agendar Visita" />
+					</View>
+					{/* <View >
+						<Text >Você está em SIS QL 12 Lago Sul</Text>
+					</View> */}
+					</View>
 			</View>
 		);
 	}
