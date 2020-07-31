@@ -1,13 +1,18 @@
-from flask import Flask, render_template, request
-from password import pss_hash, pss_check
+from flask import Flask, render_template, request, session, redirect, url_for
+from password import pss_hash, pss_check, validate_pss
 from validate_email import validate_email
+from datetime import timedelta
 import ibm_db
 
 
 #conn = ibm_db.connect("database","username","password")
 app = Flask(__name__)
+<<<<<<< HEAD
+app.secret_key = "TROCAR ESSA SENHA"
+app.permanent_session_lifetime = timedelta(days=20)
+conn = ibm_db.connect("Server=***;Port=50000;Hostname=**; Database=BLUDB;UID=**;PWD=**;", 'uid', 'pss')
+	
 conn = ibm_db.connect("Server=****;Port=50000;Hostname=****; Database=BLUDB;UID=**;PWD=senha;", '*****', '****')
-
 
 @app.route("/")
 def home():
@@ -17,30 +22,56 @@ def home():
 def login():
 	email = request.args.get('email')
 	password = request.args.get('password')
-	#consertar: a condição é sempre falsa
-	if password == None or email== None:
-		return 'O email e a senha precisam ser preenchidos para efetuar o login'
+	sql = 'SELECT email, senha FROM usuarios WHERE email = ?'
+	stmt = ibm_db.prepare(conn, sql)
+	param = tuple((email, password))
+	email = ibm_db.execute(stmt, param)
+	print(email)
+	session.permanent = True
+	session['email'] = email
 	#TODO: validar email, checar senha com o banco de dados e garantir acesso
 	#se o user logar direitinho
 	return 'tudo correu bem'
 
 @app.route("/register/user/", methods=['POST', 'GET'])
 def register_usr():
-#TODO: transferir a validação de dados para outro arquivo e importar
-#p/ poupar linhas e deixar o código mais limpo
-	name = request.args.get('name')
-	email = request.args.get('email')
-	pss = request.args.get('password')
-	psscheck = request.args.get('password2')
-	if psscheck != pss:
-		return 'As senhas devem ser iguais'
-	elif len(pss) >= 8 and pss.isalnum and validate_email(email) and len(name) <= 35 and len(name) >= 2:
-		pss = pss_hash(pss) #TODO: salvar na db
-		return 'conta criada'
-	else:
-		return 'falha no registro'
+	if request.method == "POST":
+		name = request.args.get('name')
+		email = request.args.get('email')
+		pss = request.args.get('password')
+		psscheck = request.args.get('password2')
+		if len(pss) >= 8 and pss.isalnum and validate_email(email) and len(name) <= 35 and len(name) >= 2 and validate_pss(pss, psscheck):
+			pss = pss_hash(pss)
+			salvar_dados = 'INSERT INTO usuarios(nome, email, senha) VALUES(?, ?, ?)'
+			param = tuple((name, email, pss))
+			stmt = ibm_db.prepare(conn, salvar_dados)
+			ibm_db.execute(stmt, param)
+			return redirect(url_for("user"))
+		else:
+			return 'falha no registro'
+	return
 
 @app.route("/register/estabelecimento/", methods=['POST', 'GET'])
+
+def register_stb(): 
+	if request.method == "POST":
+		name = request.args.get('name')
+		email = request.args.get('email')
+		uf = request.args.get('uf')
+		cep = str(request.args.get('cep'))
+		logradouro = str(request.args.get('logradouro'))
+		num = str(request.args.get('num'))
+		pss = request.args.get('password')
+		psscheck = request.args.get('password2')
+		if validate_email(email) and len(name) <= 35 and len(name) >= 2 and len(uf) == 2 and len(cep) == 8 and len(logradouro) <= 35 and len(num) <= 5 and validate_pss(pss, psscheck):
+			pss = pss_hash(pss)
+			salvar_dados = 'INSERT INTO estabelecimentos(nome, email, senha, uf, cep, logradouro, numero) VALUES(?, ?, ?, ?, ?, ?, ?)'
+			param = tuple((name, email, pss, uf, cep, logradouro, num))
+			stmt = ibm_db.prepare(conn, salvar_dados)
+			ibm_db.execute(stmt, param)
+		else:
+			return 'falha no registro'
+
 def register_stb():
 	name = request.args.get('name')
 	email = request.args.get('email')
@@ -56,13 +87,19 @@ def register_stb():
 		pss = pss_hash(pss) #TODO: salvar na db
 		return 'estabelecimento registrado'
 	else:
-		return 'falha no registro'
+		return
 
+@app.route('/user/')
+def user():
+	if "email" in session:
+		email = session["email"]
+	else:
+		return redirect(url_for("login"))
 
-#@app.route("/teste/", methods=['POST', 'GET'])
-#def test():
-#	 ibm_db.exec_immediate(conn, 'INSERT INTO teste VALUES(\'sim\')')
-#	 return 'vai olhar o banco de dados'
+@app.route('/logout/')
+def logout():
+	session.pop("email", None)
+	return redirect(url_for("login"))
 
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)
