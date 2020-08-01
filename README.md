@@ -12,18 +12,20 @@ Using sharevid, you can book your visits online and avoid crowds, therefore, mak
 
 ## Demo video
 
+![video](https://youtu.be/LSg4IeBk48Y)
+
 ## The architecture 
 
 ![Imgur](https://i.imgur.com/5RtCtfE.jpg)
 
 ## Project roadmap
 
-![Roadmap]()
+![Imgur](https://i.imgur.com/54XMFH2.jpg)
 
 ## Installing
 
 After cloning the repo, run ```npx react-native run-android```
-
+run the python server locally
 
 
 ## Built with
