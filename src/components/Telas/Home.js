@@ -35,10 +35,10 @@ class Home extends Component {
 							<Text style={styles.p}>Restaurante Vila K</Text>
 						</View>
 						<View style={styles.column}>
-							<Text>08:00 as 22:00</Text>
-							<Text>06:30 as 18:30</Text>
-							<Text>08:00 as 22:00</Text>
-							<Text>11:00 as 23:30</Text>
+							<Text style={styles.p}>08:00 as 22:00</Text>
+							<Text style={styles.p}>06:30 as 18:30</Text>
+							<Text style={styles.p}>08:00 as 22:00</Text>
+							<Text style={styles.p}>11:00 as 23:30</Text>
 						</View>
 					</View>
 					<View style={{ margin: 20 }}>

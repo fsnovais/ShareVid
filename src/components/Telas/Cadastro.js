@@ -15,8 +15,8 @@ class Cadastro extends Component {
         }
     }
 
-    SalvarCadastro = async () => {
-        const { InputEmail, InputPass } = this.state;
+    SalvarCadastro = () => {
+        const { InputEmail, InputPass1, InputPass2 } = this.state;
 
         if ((InputEmail == '') || (InputPass1 == '') || (InputPass2 == '') || (InputEmail == '' && InputPass1 == ''&& InputPass2 == '')) {
             Alert.alert('Prencha os campos para concluir o cadastro');
@@ -24,10 +24,10 @@ class Cadastro extends Component {
         else if  (InputPass1 != InputPass2) {
             Alert.alert('As senhas precisam ser iguais')
         }
-        else if (InputPass.length < 8) {
+        else if (InputPass1.length < 8) {
             Alert.alert('Senha precisa ter ao menos 8 caracteres')
         }
-        else if (InputEmail != '' && InputPass != '') {
+        else if (InputEmail != '' && InputPass1 != '') {
             // firebase.auth().createUserWithEmailAndPassword(InputEmail, InputPass)
             Alert.alert('Cadastro Realizado com Sucesso');
             this.props.navigation.navigate('Login')
@@ -39,8 +39,8 @@ class Cadastro extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.form}>
-                    <Text style={styles.titulocadastro}>Cadastro</Text>
-                    <Text style={styles.cadastro}>Descrição:</Text>
+                    <Text style={styles.title}>Cadastro</Text>
+                    <Text style={styles.p}>Descrição:</Text>
                 </View>
                 <View style={styles.form}>
 

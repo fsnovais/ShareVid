@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, Button, Text, StyleSheet, Image } from 'react-native';
 import styles from './estilo'
 
 
@@ -10,20 +10,20 @@ class Carrinho extends Component {
 
             <View style={styles.container}>
                 <View >
-                    <Text >Troque seus pontos</Text>
+                    <Text style={styles.title}>Troque seus pontos</Text>
                     <Image style={styles.image} source={require('../images/cine.jpg')} />
-                    <Text>Cine Drive In</Text>
+                    <Text style={styles.p}>Cine Drive In</Text>
                     <View >
-                        <Text >Individual</Text>
-                        <Text>R$ 30</Text>
+                        <Text style={styles.p} >Individual</Text>
+                        <Text style={styles.p}>R$ 30</Text>
                     </View>
                     <View >
-                        <Text >Casal</Text>
-                        <Text>R$ 60</Text>
+                        <Text style={styles.p} >Casal</Text>
+                        <Text style={styles.p}>R$ 60</Text>
                     </View>
                     <View >
-                        <Text >Familia</Text>
-                        <Text>R$ 120</Text>
+                        <Text style={styles.p} >Familia</Text>
+                        <Text style={styles.p}>R$ 120</Text>
                     </View>
                     <View style={{ margin: 20 }}>
                         <Button title="Fazer Compra" />

@@ -10,27 +10,27 @@ class Pontos extends Component {
 
             <View style={styles.container}>
                 <View >
-                    <Text >Meus Pontos</Text>
+                    <Text style={styles.title} >Meus Pontos</Text>
                     <View >
-                        <Text >Fique seguro.</Text>
-                        <Text>Economize.</Text>
-                        <Text>Os pontos podem ser trocados por descontos nas lojas parceiras ou por ingressos de eventos</Text>
+                        <Text style={styles.p} >Fique seguro.</Text>
+                        <Text style={styles.p}>Economize.</Text>
+                        <Text style={styles.p}>Os pontos podem ser trocados por descontos nas lojas parceiras ou por ingressos de eventos</Text>
                     </View>
                     <View >
-                        <Text >Restaurantes</Text>
-                        <Text>2</Text>
+                        <Text style={styles.p} >Restaurantes</Text>
+                        <Text style={styles.p}>2</Text>
                     </View>
                     <View >
-                        <Text >Academias 2</Text>
-                        <Text>2</Text>
+                        <Text style={styles.p} >Academias 2</Text>
+                        <Text style={styles.p}>2</Text>
                     </View>
                     <View >
-                        <Text >Outros</Text>
-                        <Text>2</Text>
+                        <Text style={styles.p} >Outros</Text>
+                        <Text style={styles.p}>2</Text>
                     </View>
                     <View >
-                        <Text >Total</Text>
-                        <Text>1200</Text>
+                        <Text style={styles.p} >Total</Text>
+                        <Text style={styles.p}>1200</Text>
                     </View>
                     <View style={{ margin: 20 }}>
                         <Button title="Trocar pontos" />

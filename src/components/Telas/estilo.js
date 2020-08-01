@@ -4,10 +4,14 @@ export default styles = StyleSheet.create({
 
 
     container: {
-        backgroundColor: 'white',
+        backgroundColor: '#292929',
         flex: 1,
-        position: "relative"
+        position: "relative",
+        color: '#f44336'
         
+    },
+    home: {
+        backgroundColor: '#292929' 
     },
     mapa: {
         flexDirection: 'column',
@@ -40,9 +44,13 @@ export default styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap'
     },
+    texto: {
+        color: '#fff'
+    },
     p: {
         fontFamily: 'Roboto',
-        fontSize: 15
+        fontSize: 15,
+        color: 'white'
     },
     column: {
         flexDirection: 'column',

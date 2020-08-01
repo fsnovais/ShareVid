@@ -10,25 +10,25 @@ class MeusLocais extends Component {
 
             <View style={styles.container}>
                 <View >
-                    <Text >Meus Locais</Text>
+                    <Text style={styles.title} >Meus Locais</Text>
                     <View >
-                        <Text >Esses são os locais frequentes</Text>
+                        <Text style={styles.p} >Esses são os locais frequentes</Text>
                     </View>
                     <View >
-                        <Text >Fit Smart</Text>
-                        <Text>15:30</Text>
+                        <Text style={styles.p} >Fit Smart</Text>
+                        <Text style={styles.p}>15:30</Text>
                     </View>
                     <View >
-                        <Text >Cabeleira Leila</Text>
-                        <Text>19:00</Text>
+                        <Text style={styles.p} >Cabeleira Leila</Text>
+                        <Text style={styles.p}>19:00</Text>
                     </View>
                     <View >
-                        <Text >Padaria Pão Dourado</Text>
-                        <Text>Terça às 06:30</Text>
+                        <Text style={styles.p} >Padaria Pão Dourado</Text>
+                        <Text style={styles.p}>Terça às 06:30</Text>
                     </View>
                     <View >
-                        <Text >Padaria Pão Dourado</Text>
-                        <Text>Terça às 06:30</Text>
+                        <Text style={styles.p} >Padaria Pão Dourado</Text>
+                        <Text style={styles.p}>Terça às 06:30</Text>
                     </View>
                     <View style={{ margin: 20 }}>
                         <Button title="Agendar Visita" />

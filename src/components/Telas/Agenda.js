@@ -10,21 +10,21 @@ class Agenda extends Component {
 
             <View style={styles.container}>
                 <View >
-                    <Text >Visitas Agendadas</Text>
+                    <Text style={styles.title}>Visitas Agendadas</Text>
                     <View >
-                        <Text >Fit Smart</Text>
-                        <Text>15:30</Text>
-                        <Text>Lotação Média</Text>
+                        <Text style={styles.p} >Fit Smart</Text>
+                        <Text style={styles.p}>15:30</Text>
+                        <Text style={styles.p}>Lotação Média</Text>
                     </View>
                     <View >
-                        <Text >Cabeleira Leila</Text>
-                        <Text>19:00</Text>
-                        <Text>Lotação Baixa</Text>
+                        <Text style={styles.p} >Cabeleira Leila</Text>
+                        <Text style={styles.p}>19:00</Text>
+                        <Text style={styles.p}>Lotação Baixa</Text>
                     </View>
                     <View >
-                        <Text >Padaria Pão Dourado</Text>
-                        <Text>Terça às 06:30</Text>
-                        <Text>Lotação Média</Text>
+                        <Text style={styles.p} >Padaria Pão Dourado</Text>
+                        <Text style={styles.p}>Terça às 06:30</Text>
+                        <Text style={styles.p}>Lotação Média</Text>
                     </View>
                     <View style={{ margin: 20 }}>
                         <Button title="Agendar nova visita" />

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
 
 import Login from "./src/components/Telas/Login"
 import Cadastro from "./src/components/Telas/Cadastro"
@@ -12,26 +17,37 @@ import Pontos from "./src/components/Telas/Pontos"
 import Restaurantes from "./src/components/Telas/Restaurantes"
 import Reunioes from "./src/components/Telas/ReunioesEEventos"
 
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+    </DrawerContentScrollView>
+  );
+}
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 
+const MyDrawer = () => {
+  return (
+    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
+      <Drawer.Screen name="Login" component={Login} />
+      <Drawer.Screen name="Cadastro" component={Cadastro} />
+      <Drawer.Screen name="Home" component={Home} />
+      <Drawer.Screen name="Agenda" component={Agenda} />
+      <Drawer.Screen name="Carrinho" component={Carrinho} />
+      <Drawer.Screen name="Meus Locais" component={MeusLocais} />
+      <Drawer.Screen name="Pontos" component={Pontos} />
+      <Drawer.Screen name="Restaurantes" component={Restaurantes} />
+      <Drawer.Screen name="Reunioes" component={Reunioes} />
+    </Drawer.Navigator>
+  );
+}
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Login">
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Agenda" component={Agenda} />
-        <Stack.Screen name="Carrinho" component={Carrinho} />
-        <Stack.Screen name="MeusLocais" component={MeusLocais} />
-        <Stack.Screen name="Pontos" component={Pontos} />
-        <Stack.Screen name="Restaurantes" component={Restaurantes} />
-        <Stack.Screen name="Reunioes" component={Reunioes} />
-
-      </Stack.Navigator>
+      <MyDrawer />
     </NavigationContainer>
   );
 }
