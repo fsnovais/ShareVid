@@ -22,7 +22,7 @@ Using sharevid, you can book your visits online and avoid crowds, therefore, mak
 
 ![Imgur](https://i.imgur.com/54XMFH2.jpg)
 
-## Installing
+## Running
 
 After cloning the repo, run ```npx react-native run-android```
 
