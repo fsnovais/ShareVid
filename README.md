@@ -4,7 +4,7 @@ An application that helps you find places respecting social distancing measures,
 
 ### What's the problem?
 
-While most busiesses are reopening, people often will face crowded places, risking their well being unnecessarily
+While most businesses are reopening, people often will face crowded places, risking their well being unnecessarily
 
 ### How can technology help?
 
