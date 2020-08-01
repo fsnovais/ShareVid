@@ -25,6 +25,7 @@ Using sharevid, you can book your visits online and avoid crowds, therefore, mak
 ## Installing
 
 After cloning the repo, run ```npx react-native run-android```
+
 run the python server locally
 
 
