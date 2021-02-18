@@ -21,7 +21,6 @@
 * [Getting Started](#runner-getting-started)
 * [FAQ](#postbox-faq)
 * [Found a bug? Missing a specific feature?](#bug-issues)
-* [Contributing](#tada-contributing)
 * [License](#closed_book-license)
 
 <br />
@@ -36,7 +35,8 @@ Using sharevid, you can book your visits online and avoid crowds, therefore, mak
 
 # Demo video
 
-<a href="https://youtu.be/LSg4IeBk48Y?t=37" target="_blank" align="center">
+[![Sharevid](https://img.youtube.com/vi/LSg4IeBk48Y/0.jpg)](https://www.youtube.com/watch?v=LSg4IeBk48Y "Sharevid")
+
 </a>
 
 # The architecture 
@@ -52,22 +52,34 @@ Using sharevid, you can book your visits online and avoid crowds, therefore, mak
 **You need to install [NodeJs](https://nodejs.org/en/), [ReactNative](https://reactnative.dev/) and [YARN](https://yarnpkg.com/) first, then in order to clone the project via HTTPS, run this command:**
 
 ```git clone https://github.com/phellippe/ShareVid.git```
-SSH URLs provide access to a Git repository via SSH, a secure protocol. If you have a SSH key registered in your Github account, clone the project using this command:
-```git clone git@github.com:phellippe/ShareVid.git```
-**Install dependencies**
-You need to install the dependencies of the project, so **run the above command on root folder**:
-```yarn```
-You need to install the dependencies if you're using Macbook, so **run the above command on ths ios folder**:
-```pod install```
-# :runner: Getting Started
-Run the following command to start the application in a development environment:
-```react-native run-android | react-native run-ios```
 
+SSH URLs provide access to a Git repository via SSH, a secure protocol. If you have a SSH key registered in your Github account, clone the project using this command:
+
+```git clone git@github.com:phellippe/ShareVid.git```
+
+**Install dependencies**
+
+You need to install the dependencies of the project, so **run the above command on root folder**:
+
+```yarn```
+
+You need to install the dependencies if you're using Macbook, so **run the above command on ths ios folder**:
+
+```pod install```
+
+# :runner: Getting Started
+
+Run the following command to start the application in a development environment:
+
+```react-native run-android | react-native run-ios```
 
 # :postbox: Faq
 **Question:** What are the technologies used in this project?
+
 **Answer:** The technologies used in this project are [NodeJs](https://nodejs.org/en/), [React Native](https://reactnative.dev/),[Flask](https://flask.palletsprojects.com/en/1.1.x/), [ExpressJS](https://expressjs.com/pt-br/) and [Jest](https://jestjs.io/).
+
 # :bug: Issues
+
 Feel free to **file a new issue** with a respective title and description on the [ShareVid](https://github.com/jennifertakagi/ShareVid/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
 
 # :closed_book: License
